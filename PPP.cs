@@ -1,13 +1,31 @@
 using System;
 
-public class PRS
+/* pętla while
+tablica */
+
+public class PPP
 {
     public static void Main()
     {
-    // int player;
 
-      int P1 = Choice();
-      System.Console.WriteLine("Player 1 chose {0}", P1);
+      string replay = null;
+
+      do{
+        int P1 = Choice();
+        bool correct = Check(P1);
+         //           System.Console.WriteLine("{0}", correct);
+         //  System.Console.WriteLine("alalala, {0}", P1);
+        if(correct == false){  
+          System.Console.WriteLine("Wrong value. Try again:");
+          Main();
+        }else{
+          System.Console.WriteLine("Player 1 chose {0}", P1);
+          System.Console.WriteLine("Do you want to play again? y/n");
+          replay = System.Console.ReadLine();
+        }
+      }while(replay == "y");
+    }
+    
 /*
 
       if (P1 == P2)  {
@@ -24,14 +42,13 @@ public class PRS
          Console.WriteLine("Oops! Something went wrong!");
         }
 */
-    }
+    
 
-    static int Choice()  
+    public static int Choice()  
     {
-
-        System.Console.WriteLine("Player 1, choose from Rock [1], Scissors [2], Paper [3]");
+        System.Console.WriteLine("Player 1, choose from Sword [1], Bow [2], Axe [3]");
         int weapon = int.Parse(Console.ReadLine());
-        Console.Clear();
+      //  Console.Clear();
        // System.Console.WriteLine("Player 2, choose from Rock, Scissors, Paper");
       //  string P2 = System.Console.ReadLine();
         //Console.Clear();
@@ -41,7 +58,17 @@ public class PRS
 
         return weapon;
     }
-   // }
+
+
+    public static bool Check(int P1)  
+    {
+      if (P1 == 1 || P1 == 2 || P1 == 3) {
+          return true;
+      } else {
+      return false;               
+      }
+    }
+
 }
 
 
