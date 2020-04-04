@@ -4,16 +4,17 @@ public class PPP
 {
     public static void Main()
     {
+
       int P1 = Choice();
       bool correct = Check(P1);
                   System.Console.WriteLine("{0}", correct);
         System.Console.WriteLine("alalala, {0}", P1);
-      do{
+      if(correct == false){  
         System.Console.WriteLine("Wybrano wartość spoza zakresu. Spróbuj ponownie:");
         Main();
-      }while(correct == false);
+      }else{
       System.Console.WriteLine("Player 1 chose {0}", P1);
-    }
+    }}
 
 /*
 
