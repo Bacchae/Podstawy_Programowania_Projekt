@@ -28,7 +28,6 @@ public class PRS
 
     static int Choice()  
     {
-
         System.Console.WriteLine("Player 1, choose from Rock [1], Scissors [2], Paper [3]");
         int weapon = int.Parse(Console.ReadLine());
         Console.Clear();
