@@ -4,19 +4,15 @@ public class PPP
 {
     public static void Main()
     {
-    // int player;
-
       int P1 = Choice();
       bool correct = Check(P1);
-
-      do{
-        System.Console.WriteLine("{0}", correct);
+      //  System.Console.WriteLine("alalala {0}", correct);
+      if(correct == False){
         System.Console.WriteLine("Wybrano wartość spoza zakresu. Spróbuj ponownie:");
-        P1 = Choice();
-        bool correct = Check(P1);
-      } while (correct == False);
+        Main();
+      }else{}
       System.Console.WriteLine("Player 1 chose {0}", P1);
-      
+    }
 
 /*
 
@@ -34,9 +30,9 @@ public class PPP
          Console.WriteLine("Oops! Something went wrong!");
         }
 */
-    }
+    
 
-    static int Choice()  
+    public static int Choice()  
     {
         System.Console.WriteLine("Player 1, choose from Sword [1], Bow [2], Axe [3]");
         int weapon = int.Parse(Console.ReadLine());
@@ -50,10 +46,10 @@ public class PPP
 
         return weapon;
     }
-   // }
 
-    static bool Check(int P1)  
-    { 
+
+    public static bool Check(int P1)  
+    {
       if (P1 != 1 || P1 == 2 || P1 == 3) {
           return true;
       } else {
