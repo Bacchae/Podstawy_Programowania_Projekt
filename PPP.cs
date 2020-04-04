@@ -1,5 +1,8 @@
 using System;
 
+/* pętla while
+tablica */
+
 public class PPP
 {
     public static void Main()
