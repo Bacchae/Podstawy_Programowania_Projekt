@@ -1,13 +1,23 @@
 using System;
 
-public class PRS
+public class PPP
 {
     public static void Main()
     {
     // int player;
 
       int P1 = Choice();
+      bool correct = Check(P1);
+
+      do{
+        System.Console.WriteLine("{0}", correct);
+        System.Console.WriteLine("Wybrano wartość spoza zakresu. Spróbuj ponownie:");
+        P1 = Choice();
+        bool correct = Check(P1);
+      } while (correct == False);
       System.Console.WriteLine("Player 1 chose {0}", P1);
+      
+
 /*
 
       if (P1 == P2)  {
@@ -28,9 +38,9 @@ public class PRS
 
     static int Choice()  
     {
-        System.Console.WriteLine("Player 1, choose from Rock [1], Scissors [2], Paper [3]");
+        System.Console.WriteLine("Player 1, choose from Sword [1], Bow [2], Axe [3]");
         int weapon = int.Parse(Console.ReadLine());
-        Console.Clear();
+      //  Console.Clear();
        // System.Console.WriteLine("Player 2, choose from Rock, Scissors, Paper");
       //  string P2 = System.Console.ReadLine();
         //Console.Clear();
@@ -41,6 +51,17 @@ public class PRS
         return weapon;
     }
    // }
+
+    static bool Check(int P1)  
+    { 
+      if (P1 != 1 || P1 == 2 || P1 == 3) {
+          return true;
+      } else {
+            System.Console.WriteLine("{0}", correct);
+      return false;               
+      }
+    }
+
 }
 
 
