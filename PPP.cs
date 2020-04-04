@@ -7,6 +7,9 @@ public class PPP
 {
     public static void Main()
     {
+
+      string replay = null;
+
       do{
         int P1 = Choice();
         bool correct = Check(P1);
@@ -18,9 +21,9 @@ public class PPP
         }else{
           System.Console.WriteLine("Player 1 chose {0}", P1);
           System.Console.WriteLine("Do you want to play again? y/n");
-          char replay = System.Console.ReadLine();
+          replay = System.Console.ReadLine();
         }
-      }while(replay == "y")
+      }while(replay == "y");
     }
     
 /*
