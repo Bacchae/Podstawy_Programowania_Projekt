@@ -7,18 +7,22 @@ public class PPP
 {
     public static void Main()
     {
-
-      int P1 = Choice();
-      bool correct = Check(P1);
-                  System.Console.WriteLine("{0}", correct);
-        System.Console.WriteLine("alalala, {0}", P1);
-      if(correct == false){  
-        System.Console.WriteLine("Wybrano wartość spoza zakresu. Spróbuj ponownie:");
-        Main();
-      }else{
-      System.Console.WriteLine("Player 1 chose {0}", P1);
-    }}
-
+      do{
+        int P1 = Choice();
+        bool correct = Check(P1);
+         //           System.Console.WriteLine("{0}", correct);
+         //  System.Console.WriteLine("alalala, {0}", P1);
+        if(correct == false){  
+          System.Console.WriteLine("Wrong value. Try again:");
+          Main();
+        }else{
+          System.Console.WriteLine("Player 1 chose {0}", P1);
+          System.Console.WriteLine("Do you want to play again? y/n");
+          char replay = System.Console.ReadLine();
+        }
+      }while(replay == "y")
+    }
+    
 /*
 
       if (P1 == P2)  {
