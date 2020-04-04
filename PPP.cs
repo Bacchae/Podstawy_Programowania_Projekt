@@ -6,11 +6,12 @@ public class PPP
     {
       int P1 = Choice();
       bool correct = Check(P1);
-      //  System.Console.WriteLine("alalala {0}", correct);
-      if(correct == False){
+                  System.Console.WriteLine("{0}", correct);
+        System.Console.WriteLine("alalala, {0}", P1);
+      do{
         System.Console.WriteLine("Wybrano wartość spoza zakresu. Spróbuj ponownie:");
         Main();
-      }else{}
+      }while(correct == false);
       System.Console.WriteLine("Player 1 chose {0}", P1);
     }
 
@@ -50,10 +51,9 @@ public class PPP
 
     public static bool Check(int P1)  
     {
-      if (P1 != 1 || P1 == 2 || P1 == 3) {
+      if (P1 == 1 || P1 == 2 || P1 == 3) {
           return true;
       } else {
-            System.Console.WriteLine("{0}", correct);
       return false;               
       }
     }
