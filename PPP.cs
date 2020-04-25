@@ -13,7 +13,7 @@ public class PPP
       do{
         int P1 = Choice1();
         int P2 = Choice2();
-
+System.Console.WriteLine("alalala, {0}", P2);
         bool correct = Check(P1, P2);
        // bool correct = Check(P2);
          //           System.Console.WriteLine("{0}", correct);
@@ -58,7 +58,7 @@ public class PPP
     {
       Random r = new Random();
       r.Next(4);
-      var weapon2 = r;
+      weapon2 = r;
         return weapon2;
     }
 
