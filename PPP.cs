@@ -10,9 +10,10 @@ public class PPP
       do{
         int P1 = Choice1();
         int P2 = Choice2();
-System.Console.WriteLine("alalala, {0}", P2);
-        name = GetName(P1);
+
+        string name1 = GetName(P1);
        // name2 = GetName(P2);
+       System.Console.WriteLine("alalala, {0}", name1);
         bool correct = Check(P1, P2);
        // bool correct = Check(P2);
          //           System.Console.WriteLine("{0}", correct);
@@ -70,7 +71,7 @@ System.Console.WriteLine("alalala, {0}", P2);
       }
     }
 
-  public static string GetName() 
+  public static string GetName(int P1) 
     {
       string name = null;
 
