@@ -11,9 +11,6 @@ public class PPP
         int P1 = Choice1();
         int P2 = Choice2();
 
-        string name1 = GetName(P1);
-       // name2 = GetName(P2);
-       System.Console.WriteLine("alalala, {0}", name1);
         bool correct = Check(P1, P2);
        // bool correct = Check(P2);
          //           System.Console.WriteLine("{0}", correct);
@@ -23,28 +20,13 @@ public class PPP
           Main();
         }else{
           System.Console.WriteLine("Player 1 chose {0}", P1);
+          System.Console.WriteLine("Player 2 chose {0}", P2);
+          Fight(P1, P2);
           System.Console.WriteLine("Do you want to play again? y/n");
           replay = System.Console.ReadLine();
         }
       }while(replay == "y");
     }
-    
-/*
-
-      if (P1 == P2)  {
-          Console.WriteLine("It's a draft!");
-        } else if (P1 == "Rock" && P2 == "Scissors"
-                   || P1 == "Paper" && P2 == "Rock"
-                   || P1 == "Scissors" && P2 == "Paper") {
-            Console.WriteLine("{0} beats {1}! Player 1 wins!", P1, P2);
-        } else if (P1 == "Scissors" && P2 == "Rock"
-                   || P1 == "Rock" && P2 == "Paper"
-                   || P1 == "Paper" && P2 == "Scissors") {
-            Console.WriteLine("{0} beats {1}! Player 2 wins!", P2, P1);
-        }else{
-         Console.WriteLine("Oops! Something went wrong!");
-        }
-*/
     
 
     public static int Choice1()  
@@ -71,19 +53,26 @@ public class PPP
       }
     }
 
-  public static string GetName(int P1) 
+
+    
+    public static int Fight(int P1, int P2)  
     {
-      string name = null;
-
-      if (P1 == 1 ){
-        name = "Sword";
-      } else if(P1 == 2 ) {
-        name = "Bow";              
-      } else if(P1 == 3 ) {
-        name = "Axe";              
-      }
-
-      return name; 
+      int winner = 1;
+      if (P1 == P2)  {
+          Console.WriteLine("It's a draft!");
+          winner = 0;
+        } else if (P1 == 1 && P2 == 2
+                   || P1 == 3 && P2 == 1
+                   || P1 == 2 && P2 == 3) {
+            Console.WriteLine("{0} beats {1}! Player 1 wins!", P1, P2);
+            winner = 1;
+        } else if (P1 == 2 && P2 == 1
+                   || P1 == 1 && P2 == 3
+                   || P1 == 3 && P2 == 2) {
+            Console.WriteLine("{0} beats {1}! Player 2 wins!", P2, P1);
+          winner = 2;
+        }
+      return winner;
     }
 
 
