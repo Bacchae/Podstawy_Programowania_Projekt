@@ -11,8 +11,11 @@ public class PPP
       string replay = null;
 
       do{
-        int P1 = Choice();
-        bool correct = Check(P1);
+        int P1 = Choice1();
+        int P2 = Choice2();
+
+        bool correct = Check(P1, P2);
+       // bool correct = Check(P2);
          //           System.Console.WriteLine("{0}", correct);
          //  System.Console.WriteLine("alalala, {0}", P1);
         if(correct == false){  
@@ -44,28 +47,28 @@ public class PPP
 */
     
 
-    public static int Choice()  
+    public static int Choice1()  
     {
         System.Console.WriteLine("Player 1, choose from Sword [1], Bow [2], Axe [3]");
-        int weapon = int.Parse(Console.ReadLine());
-      //  Console.Clear();
-       // System.Console.WriteLine("Player 2, choose from Rock, Scissors, Paper");
-      //  string P2 = System.Console.ReadLine();
-        //Console.Clear();
-        //System.Console.WriteLine("Player 1 chose {0}", P1);
-        //System.Console.WriteLine("Player 2 chose {0}", P2);
-        
-
-        return weapon;
+        int weapon1 = int.Parse(Console.ReadLine());
+        return weapon1;
     }
 
-
-    public static bool Check(int P1)  
+    public static int Choice2()  
     {
-      if (P1 == 1 || P1 == 2 || P1 == 3) {
+      Random r = new Random();
+      r.Next(4);
+      var weapon2 = r;
+        return weapon2;
+    }
+
+    public static bool Check(int P1, int P2)  
+    {
+      if ((P1 == 1 || P1 == 2 || P1 == 3) 
+         && (P2 == 1 || P2 == 2 || P2 == 3)) {
           return true;
       } else {
-      return false;               
+          return false;               
       }
     }
 
