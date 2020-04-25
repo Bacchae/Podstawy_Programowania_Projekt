@@ -1,8 +1,5 @@
 using System;
 
-/* pętla while
-tablica */
-
 public class PPP
 {
     public static void Main()
@@ -14,6 +11,8 @@ public class PPP
         int P1 = Choice1();
         int P2 = Choice2();
 System.Console.WriteLine("alalala, {0}", P2);
+        name = GetName(P1);
+       // name2 = GetName(P2);
         bool correct = Check(P1, P2);
        // bool correct = Check(P2);
          //           System.Console.WriteLine("{0}", correct);
@@ -49,20 +48,16 @@ System.Console.WriteLine("alalala, {0}", P2);
 
     public static int Choice1()  
     {
-      string name1 = x;
-      System.Console.WriteLine("Player 1, choose from Sword [1], Bow [2], Axe [3]");
-      int weapon1 = int.Parse(Console.ReadLine());
-        
-
-      return (weapon1, name1);
+        System.Console.WriteLine("Player 1, choose from Sword [1], Bow [2], Axe [3]");
+        int weapon1 = int.Parse(Console.ReadLine());
+        return weapon1;
     }
 
     public static int Choice2()  
     {
-      string name2 = x;
       Random random = new Random();
-      int weapon2 = random.Next(0, 4);  
-        return (weapon2, name2);
+      int weapon2 = random.Next(1, 3);  
+        return weapon2;
     }
 
     public static bool Check(int P1, int P2)  
@@ -74,6 +69,23 @@ System.Console.WriteLine("alalala, {0}", P2);
           return false;               
       }
     }
+
+  public static string GetName() 
+    {
+      string name = null;
+
+      if (P1 == 1 ){
+        name = "Sword";
+      } else if(P1 == 2 ) {
+        name = "Bow";              
+      } else if(P1 == 3 ) {
+        name = "Axe";              
+      }
+
+      return name; 
+    }
+
+
 
 }
 
