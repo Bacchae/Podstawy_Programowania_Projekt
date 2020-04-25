@@ -49,17 +49,20 @@ System.Console.WriteLine("alalala, {0}", P2);
 
     public static int Choice1()  
     {
-        System.Console.WriteLine("Player 1, choose from Sword [1], Bow [2], Axe [3]");
-        int weapon1 = int.Parse(Console.ReadLine());
-        return weapon1;
+      string name1 = x;
+      System.Console.WriteLine("Player 1, choose from Sword [1], Bow [2], Axe [3]");
+      int weapon1 = int.Parse(Console.ReadLine());
+        
+
+      return (weapon1, name1);
     }
 
     public static int Choice2()  
     {
-      Random r = new Random();
-      r.Next(4);
-      weapon2 = r;
-        return weapon2;
+      string name2 = x;
+      Random random = new Random();
+      int weapon2 = random.Next(0, 4);  
+        return (weapon2, name2);
     }
 
     public static bool Check(int P1, int P2)  
