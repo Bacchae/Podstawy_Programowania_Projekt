@@ -1,6 +1,6 @@
 using System;
 
-class Player {
+public class Player {
 
   public string playerName;
 
