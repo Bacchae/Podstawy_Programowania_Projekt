@@ -1,6 +1,5 @@
 using System;
 
-
 public class Main
 {
     public static void Main (string[] args) 
@@ -13,7 +12,7 @@ public class Main
     }
 
 
-    GamesRecord gamesRecord = new GamesRecord();
+  GamesRecord gamesRecord = new GamesRecord();
 /*
       string replay = null;
 
