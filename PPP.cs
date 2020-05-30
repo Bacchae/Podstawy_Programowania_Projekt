@@ -2,8 +2,14 @@ using System;
 
 public class PPP
 {
-    public static void Main()
+    public static void Main(string[] args)
     {
+
+
+  Player playerOne = new Player();
+  playerOne.playerName = "Player One";
+  WriteLine(playerOne.playerName);
+
 
       string replay = null;
 
