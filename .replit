@@ -1,2 +1,2 @@
 language = "csharp"
-run = "mcs PPP.cs\nmono PPP.exe"
+run = "mcs -target:exe -out:Main.exe *.cs\nmono Main.exe"

@@ -1,24 +1,20 @@
-using System;
+class Game {
+  Player playerOne, playerTwo;
+  GamesRecord gamesRecord;
 
-public class PPP
-{
-    public static void Main (string[] args) 
-    {
-      Player playerOne = new Player();
-      playerOne.playerName = "Player One";
-      WriteLine(playerOne.playerName);
-    }
-/*
+  public Game () {
+    playerOne = new Player ();
+    playerTwo = new Player ();
+    gamesRecord = new GamesRecord ();
+  }
+
       string replay = null;
 
-      do{
+    do{
         int P1 = Choice1();
         int P2 = Choice2();
 
         bool correct = Check(P1, P2);
-       // bool correct = Check(P2);
-         //           System.Console.WriteLine("{0}", correct);
-         //  System.Console.WriteLine("alalala, {0}", P1);
         if(correct == false){  
           System.Console.WriteLine("Wrong value. Try again:");
           Main();
@@ -79,8 +75,5 @@ public class PPP
       return winner;
     }
 
-*/
-
 }
-
 
