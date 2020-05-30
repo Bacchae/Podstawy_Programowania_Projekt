@@ -8,13 +8,16 @@ class Game {
     gamesRecord = new GamesRecord ();
   }
 
-      string replay = null;
+  public static void MainLoop (string[] args) 
+  {
+    string replay = null;
 
     do{
-        int P1 = Choice1();
-        int P2 = Choice2();
+      int P1 = Choice1();
+      int P2 = Choice2();
 
         bool correct = Check(P1, P2);
+
         if(correct == false){  
           System.Console.WriteLine("Wrong value. Try again:");
           Main();
@@ -74,6 +77,5 @@ class Game {
         }
       return winner;
     }
-
 }
 
