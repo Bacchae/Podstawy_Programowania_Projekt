@@ -2,15 +2,13 @@ using System;
 
 public class PPP
 {
-    public static void Main(string[] args)
+    public static void Main (string[] args) 
     {
-
-
-  Player playerOne = new Player();
-  playerOne.playerName = "Player One";
-  WriteLine(playerOne.playerName);
-
-
+      Player playerOne = new Player();
+      playerOne.playerName = "Player One";
+      WriteLine(playerOne.playerName);
+    }
+/*
       string replay = null;
 
       do{
@@ -81,7 +79,7 @@ public class PPP
       return winner;
     }
 
-
+*/
 
 }
 
