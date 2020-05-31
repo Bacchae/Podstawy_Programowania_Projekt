@@ -6,76 +6,89 @@ class Game {
     playerOne = new Player ();
     playerTwo = new Player ();
     gamesRecord = new GamesRecord ();
+    MainMenuLoop ();
   }
 
-  public static void MainLoop (string[] args) 
-  {
-    string replay = null;
+  public void DisplayRules (bool withWelcomeMessage = true) {
+    if (withWelcomeMessage) {
+      System.Console.WriteLine ("Welcome to a simple Rock-Paper-Scissors game!");
+    }
+    System.Console.WriteLine ("The rules are very simple - each player chooses Rock, Paper or Scissors choice by entering the choice's number\n[1] Rock\n[2] Paper\n[3] Scissors\nand confirm it by clicking Enter.\nAfter both player choose, the winner is determined. After each game the application will ask the players if they want to continue, and if the player repond with anything else than [y]es than the game finishes and presents the record of the last up to 10 games.\n\nHave fun!");
+  }
+
+  public string GetPlayerInput (Player player){
+    string rawInput;
+    string properInput;
+    System.Console.WriteLine ("{0}, Choose:\n[1] Rock\n[2] Paper\n[3] Scissors", player.playerName);
+    rawInput = System.Console.ReadLine();
+    while (rawInput != "1" && rawInput != "2" && rawInput != "3") {
+        System.Console.WriteLine ("Wrong input. Please enter correct one.\nPlayer One, choose:\n[1] Rock\n[2] Paper\n[3] Scissors");
+        rawInput = System.Console.ReadLine();
+    }
+    if (rawInput == "1") { properInput = "Rock"; }
+    else if (rawInput == "2") { properInput = "Paper"; }
+    else { properInput = "Scissors"; }
+    return properInput;
+  }
+
+  public string DetermineWinner (string playerOneChoice, string playerTwoChoice){
+    if (playerOneChoice == playerTwoChoice){
+        System.Console.WriteLine ("It's a draw!");
+        return "Draw";
+    }
+    else if ((playerOneChoice == "Rock" && playerTwoChoice == "Scissors") ||
+            (playerOneChoice == "Paper" && playerTwoChoice == "Rock") ||
+            (playerOneChoice == "Scissors" && playerTwoChoice == "Paper")){
+      System.Console.WriteLine ("Player One won!");
+      return "Player One won";
+    }
+    else{
+      System.Console.WriteLine ("Player Two won!");
+      return "Player Two won";
+    }
+  }
+
+  public void Play () {
 
     do{
-      int P1 = Choice1();
-      int P2 = Choice2();
 
-        bool correct = Check(P1, P2);
+      System.Console.Clear ();
+      string firstPlayerChoiceString = GetPlayerInput(playerOne);
 
-        if(correct == false){  
-          System.Console.WriteLine("Wrong value. Try again:");
-          Main();
-        }else{
-          System.Console.WriteLine("Player 1 chose {0}", P1);
-          System.Console.WriteLine("Player 2 chose {0}", P2);
-          Fight(P1, P2);
-          System.Console.WriteLine("Do you want to play again? y/n");
-          replay = System.Console.ReadLine();
-        }
-      }while(replay == "y");
-    }
-    
+      System.Console.Clear ();
+      string secondPlayerChoiceString = GetPlayerInput(playerTwo);
 
-    public static int Choice1()  
-    {
-        System.Console.WriteLine("Player 1, choose from Sword [1], Bow [2], Axe [3]");
-        int weapon1 = int.Parse(Console.ReadLine());
-        return weapon1;
-    }
+      System.Console.Clear ();
 
-    public static int Choice2()  
-    {
-      Random random = new Random();
-      int weapon2 = random.Next(1, 3);  
-        return weapon2;
-    }
+      string gameResult = DetermineWinner(firstPlayerChoiceString, secondPlayerChoiceString);
 
-    public static bool Check(int P1, int P2)  
-    {
-      if ((P1 == 1 || P1 == 2 || P1 == 3) 
-         && (P2 == 1 || P2 == 2 || P2 == 3)) {
-          return true;
-      } else {
-          return false;               
+      gamesRecord.AddRecord(firstPlayerChoiceString, secondPlayerChoiceString, gameResult); 
+
+      System.Console.WriteLine("Do you want to play again? y/n");
+
+    }while(System.Console.ReadLine() == "y");
+
+  }
+
+
+  public void MainMenuLoop (){
+
+      System.Console.Clear();
+      System.Console.WriteLine ("Rock-Paper-Scissors Menu:\n\t[1] Play a game\n\t[2] Show rules\n\t[3] Display last games' record\n\t[ESC] Exit");
+
+      if (System.Console.ReadLine() == "1"){
+        Play();
       }
-    }
+      else if (System.Console.ReadLine() == "2"){
+        DisplayRules(false);
+      }
+      else if (System.Console.ReadLine() == "3"){
+        gamesRecord.DisplayGamesHistory();
+      }
+
+  }
 
 
-    
-    public static int Fight(int P1, int P2)  
-    {
-      int winner = 1;
-      if (P1 == P2)  {
-          Console.WriteLine("It's a draft!");
-          winner = 0;
-        } else if (P1 == 1 && P2 == 2
-                   || P1 == 3 && P2 == 1
-                   || P1 == 2 && P2 == 3) {
-            Console.WriteLine("{0} beats {1}! Player 1 wins!", P1, P2);
-            winner = 1;
-        } else if (P1 == 2 && P2 == 1
-                   || P1 == 1 && P2 == 3
-                   || P1 == 3 && P2 == 2) {
-            Console.WriteLine("{0} beats {1}! Player 2 wins!", P2, P1);
-          winner = 2;
-        }
-      return winner;
-    }
+
 }
 
