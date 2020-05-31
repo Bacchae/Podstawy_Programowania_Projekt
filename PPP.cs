@@ -6,7 +6,7 @@ public class Maing
   
   public static void Main (string[] args) {
     Game game = new Game();
-  }
+}
 
 /*
       string replay = null;

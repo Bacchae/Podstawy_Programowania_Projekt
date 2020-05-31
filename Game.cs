@@ -1,3 +1,5 @@
+using System;
+
 class Game {
   Player playerOne, playerTwo;
   GamesRecord gamesRecord;
@@ -30,6 +32,13 @@ class Game {
     else { properInput = "Scissors"; }
     return properInput;
   }
+
+  public int GetRandomWeapon ()
+  {
+    int weapon = new Random().Next(1,3);
+    return weapon;
+  }
+
 
   public string DetermineWinner (string playerOneChoice, string playerTwoChoice){
     if (playerOneChoice == playerTwoChoice){
