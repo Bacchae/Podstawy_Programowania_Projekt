@@ -7,9 +7,8 @@ class Game {
   public Game () {
     System.Console.WriteLine ("Wchodzisz do karczmy. Zza lady spogląda na ciebie karczmarz i mówi: 'Podaj mi swoje imię, podróżniku.'");
     playerOne = new Player ();
-    string playerTwoChoice = null;
-    GetRandomWeapon ();
     gamesRecord = new GamesRecord ();
+    
     MainMenuLoop ();
   }
 
@@ -35,32 +34,35 @@ class Game {
     return properInput;
   }
 
-  public int GetRandomWeapon ()
+  public string GetRandomWeapon ()
   {
     int weapon = new Random().Next(1,3);
     if(weapon == 1){
-      playerTwoChoice = "Rock";
+      string playerTwoChoice = "Rock";
       return playerTwoChoice;
     }else if(weapon == 2){
-      playerTwoChoice = "Paper";
+      string playerTwoChoice = "Paper";
       return playerTwoChoice;
     }else if(weapon == 3){
-      playerTwoChoice = "Scissors";
+      string playerTwoChoice = "Scissors";
       return playerTwoChoice;
+    } else{
+      return GetRandomWeapon ();
     }
-    return weapon;
   }
 
 
   public string DetermineWinner (string playerOneChoice, string playerTwoChoice){
+   System.Console.WriteLine ("{0} wybrał broń {1}\n Potwór wybrał broń {2}", player.playerName, playerOneChoice, playerTwoChoice);
+
     if (playerOneChoice == playerTwoChoice){
-        System.Console.WriteLine ("It's a draw!");
+        System.Console.WriteLine ("Walka zakończona remisem!");
         return "Draw";
     }
     else if ((playerOneChoice == "Rock" && playerTwoChoice == "Scissors") ||
             (playerOneChoice == "Paper" && playerTwoChoice == "Rock") ||
             (playerOneChoice == "Scissors" && playerTwoChoice == "Paper")){
-      System.Console.WriteLine ("Player One won!");
+      System.Console.WriteLine ("{0} wygrał!", player.playerName);
       return "Player One won";
     }
     else{
@@ -76,8 +78,11 @@ class Game {
       System.Console.Clear ();
       string firstPlayerChoiceString = GetPlayerInput(playerOne);
 
-     // System.Console.Clear ();
-      //string secondPlayerChoiceString = GetPlayerInput(playerTwo);
+     //System.Console.Clear ();
+     // string secondPlayerChoiceString = GetPlayerInput(playerTwo);
+
+      string secondPlayerChoiceString = GetRandomWeapon ();
+
 
       System.Console.Clear ();
 
