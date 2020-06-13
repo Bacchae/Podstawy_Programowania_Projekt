@@ -118,16 +118,29 @@ class Game {
   }
 
 
-  public void GameStartChat(string playerName){
+  public void GameStartChat (string playerName){
+
 
     System.Console.WriteLine ("\n'{0}, huh? Nigdy nie słyszałem takiego imienia, musisz być tutaj nowy. Tak więc powiedz mi {0}, co cię tutaj sprowadza?'\n\nOdpowiadasz:\n[1] Jestem przejazdem, chcę zwiedzić okolicę\n[2] Przybyłem w poszukiwaniu bogactwa\n[3] Szukam przygody", playerName);
-    
 
+    string response;
+    response = System.Console.ReadLine();
 
+    if(response == "1"){
+      System.Console.WriteLine ("\n'To wspaniałe ziemie, ale musisz być ostrożny' odpowiada karczmarz. 'W okolicy czai się wiele potworów, lepiej mieć broń w pogotowiu.'");
+    }else if (response == "2"){
+      System.Console.WriteLine ("\n'Ambitnie!' odpowiada karczmarz. 'Mamy w okolicy trochę ruin, pewnie są w nich jakieś skarby. Możesz też zapolować na potwory, ich skóry są bardzo cenne.'");
+    }else if (response == "3"){
+      System.Console.WriteLine ("\n'Przygody na pewno ci w tych okoliach nie braknie' odpowiada karczmarz. 'Wystarczy wyjść na dwór, a jakaś sama z pewnością cię znajdzie.'");
+    }else{
+      System.Console.WriteLine ("\n'Nie do końca rozumiem o czym mówisz' odpowiada karczmarz, po czym macha zbywająco ręką. 'To pewnie przez to, że jesteś obcokrajowcem. To co, co zamierzasz teraz zrobić?'");
+    };
 
-
+   MainMenuLoop ();
 
   }
+
+//public void GameStartResponse
 
 
 }
