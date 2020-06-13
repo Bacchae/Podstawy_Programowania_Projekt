@@ -5,7 +5,7 @@ class Game {
   GamesRecord gamesRecord;
 
   public Game () {
-    System.Console.WriteLine ("Wchodzisz do karczmy. Zza lady spogląda na ciebie karczmarz i mówi: 'Podaj mi swoje imię, podróżniku.'");
+    System.Console.WriteLine ("Wchodzisz do karczmy. Zza lady spogląda na ciebie karczmarz i mówi: 'Podaj mi swoje imię, podróżniku.'\n");
     playerOne = new Player ();
     string playerName = playerOne.playerName;
 
@@ -118,10 +118,15 @@ class Game {
   }
 
 
-  public void GameStartChat(playerName){
+  public void GameStartChat(string playerName){
 
-      System.Console.WriteLine ("'{0}, huh? Nigdy nie słyszałem takiego imienia, musisz być tutaj nowy. Tak więc powiedz mi, co cię tutaj sprowadza?''");
+    System.Console.WriteLine ("\n'{0}, huh? Nigdy nie słyszałem takiego imienia, musisz być tutaj nowy. Tak więc powiedz mi {0}, co cię tutaj sprowadza?'\n\nOdpowiadasz:\n[1] Jestem przejazdem, chcę zwiedzić okolicę\n[2] Przybyłem w poszukiwaniu bogactwa\n[3] Szukam przygody", playerName);
     
+
+
+
+
+
   }
 
 
