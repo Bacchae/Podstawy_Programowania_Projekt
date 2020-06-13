@@ -7,9 +7,11 @@ class Game {
   public Game () {
     System.Console.WriteLine ("Wchodzisz do karczmy. Zza lady spogląda na ciebie karczmarz i mówi: 'Podaj mi swoje imię, podróżniku.'");
     playerOne = new Player ();
+    string playerName = playerOne.playerName;
+
     gamesRecord = new GamesRecord ();
-    
-    MainMenuLoop ();
+    GameStartChat(playerName);
+  //  MainMenuLoop ();
   }
 
   public void DisplayRules (bool withWelcomeMessage = true) {
@@ -22,7 +24,7 @@ class Game {
   public string GetPlayerInput (Player player){
     string rawInput;
     string properInput;
-    System.Console.WriteLine ("{0}, Choose:\n[1] Rock\n[2] Paper\n[3] Scissors", player.playerName);
+    System.Console.WriteLine ("{0}, Choose:\n[1] Rock\n[2] Paper\n[3] Scissors");
     rawInput = System.Console.ReadLine();
     while (rawInput != "1" && rawInput != "2" && rawInput != "3") {
         System.Console.WriteLine ("Wrong input. Please enter correct one.\nPlayer One, choose:\n[1] Rock\n[2] Paper\n[3] Scissors");
@@ -53,20 +55,20 @@ class Game {
 
 
   public string DetermineWinner (string playerOneChoice, string playerTwoChoice){
-   System.Console.WriteLine ("{0} wybrał broń {1}\n Potwór wybrał broń {2}", player.playerName, playerOneChoice, playerTwoChoice);
+       System.Console.WriteLine ("Wybrałeś broń {0}. Potwór wybrał broń {1}", playerOneChoice, playerTwoChoice);
 
     if (playerOneChoice == playerTwoChoice){
-        System.Console.WriteLine ("Walka zakończona remisem!");
+        System.Console.WriteLine ("It's a draw!");
         return "Draw";
     }
     else if ((playerOneChoice == "Rock" && playerTwoChoice == "Scissors") ||
             (playerOneChoice == "Paper" && playerTwoChoice == "Rock") ||
             (playerOneChoice == "Scissors" && playerTwoChoice == "Paper")){
-      System.Console.WriteLine ("{0} wygrał!", player.playerName);
+      System.Console.WriteLine ("Zwycięstwo!");
       return "Player One won";
     }
     else{
-      System.Console.WriteLine ("Player Two won!");
+      System.Console.WriteLine ("Przegrałeś!");
       return "Player Two won";
     }
   }
@@ -93,14 +95,15 @@ class Game {
       System.Console.WriteLine("Do you want to play again? y/n");
 
     }while(System.Console.ReadLine() == "y");
-
+    MainMenuLoop ();
   }
 
 
   public void MainMenuLoop (){
-
       System.Console.Clear();
-      System.Console.WriteLine ("Rock-Paper-Scissors Menu:\n\t[1] Play a game\n\t[2] Show rules\n\t[3] Display last games' record\n\t[ESC] Exit");
+      System.Console.WriteLine ("'Co cię tu sprowadza?':\n\t[1] Play a game\n\t[2] Show rules\n\t[3] Display last games' record\n\t[ESC] Exit");
+ 
+
 
       if (System.Console.ReadLine() == "1"){
         Play();
@@ -114,6 +117,12 @@ class Game {
 
   }
 
+
+  public void GameStartChat(playerName){
+
+      System.Console.WriteLine ("'{0}, huh? Nigdy nie słyszałem takiego imienia, musisz być tutaj nowy. Tak więc powiedz mi, co cię tutaj sprowadza?''");
+    
+  }
 
 
 }
