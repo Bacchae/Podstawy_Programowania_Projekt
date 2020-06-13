@@ -24,15 +24,15 @@ class Game {
   public string GetPlayerInput (Player player){
     string rawInput;
     string properInput;
-    System.Console.WriteLine ("{0}, Choose:\n[1] Rock\n[2] Paper\n[3] Scissors");
+    System.Console.WriteLine ("Wybierz swoją broń:\n[1] Miecz\n[2] Topór\n[3] Włócznia");
     rawInput = System.Console.ReadLine();
     while (rawInput != "1" && rawInput != "2" && rawInput != "3") {
-        System.Console.WriteLine ("Wrong input. Please enter correct one.\nPlayer One, choose:\n[1] Rock\n[2] Paper\n[3] Scissors");
+        System.Console.WriteLine ("Wrong input. Please enter correct one.\nPlayer One, choose:\n[1] Miecz\n[2] Topór\n[3] Włócznia");
         rawInput = System.Console.ReadLine();
     }
-    if (rawInput == "1") { properInput = "Rock"; }
-    else if (rawInput == "2") { properInput = "Paper"; }
-    else { properInput = "Scissors"; }
+    if (rawInput == "1") { properInput = "Miecz"; }
+    else if (rawInput == "2") { properInput = "Topór"; }
+    else { properInput = "Włócznia"; }
     return properInput;
   }
 
@@ -40,13 +40,13 @@ class Game {
   {
     int weapon = new Random().Next(1,3);
     if(weapon == 1){
-      string playerTwoChoice = "Rock";
+      string playerTwoChoice = "Miecz";
       return playerTwoChoice;
     }else if(weapon == 2){
-      string playerTwoChoice = "Paper";
+      string playerTwoChoice = "Topór";
       return playerTwoChoice;
     }else if(weapon == 3){
-      string playerTwoChoice = "Scissors";
+      string playerTwoChoice = "Włócznia";
       return playerTwoChoice;
     } else{
       return GetRandomWeapon ();
@@ -58,12 +58,12 @@ class Game {
        System.Console.WriteLine ("Wybrałeś broń {0}. Potwór wybrał broń {1}", playerOneChoice, playerTwoChoice);
 
     if (playerOneChoice == playerTwoChoice){
-        System.Console.WriteLine ("It's a draw!");
-        return "Draw";
+        System.Console.WriteLine ("Remis!");
+        return "draw";
     }
-    else if ((playerOneChoice == "Rock" && playerTwoChoice == "Scissors") ||
-            (playerOneChoice == "Paper" && playerTwoChoice == "Rock") ||
-            (playerOneChoice == "Scissors" && playerTwoChoice == "Paper")){
+    else if ((playerOneChoice == "Miecz" && playerTwoChoice == "Włócznia") ||
+            (playerOneChoice == "Topór" && playerTwoChoice == "Miecz") ||
+            (playerOneChoice == "Włócznia" && playerTwoChoice == "Topór")){
       System.Console.WriteLine ("Zwycięstwo!");
       return "Player One won";
     }
@@ -100,8 +100,8 @@ class Game {
 
 
   public void MainMenuLoop (){
-      System.Console.Clear();
-      System.Console.WriteLine ("'Co cię tu sprowadza?':\n\t[1] Play a game\n\t[2] Show rules\n\t[3] Display last games' record\n\t[ESC] Exit");
+      //System.Console.Clear();
+      System.Console.WriteLine ("Co zamierzasz teraz zrobić?\n\t[1] Walcz z potworem\n\t[2] Show rules\n\t[3] Display last games' record\n\t[ESC] Exit");
  
 
 
@@ -127,20 +127,21 @@ class Game {
     response = System.Console.ReadLine();
 
     if(response == "1"){
-      System.Console.WriteLine ("\n'To wspaniałe ziemie, ale musisz być ostrożny' odpowiada karczmarz. 'W okolicy czai się wiele potworów, lepiej mieć broń w pogotowiu.'");
+      System.Console.WriteLine ("\n'To wspaniałe ziemie, ale musisz być ostrożny' odpowiada karczmarz. 'W okolicy czai się wiele potworów, lepiej mieć broń w pogotowiu.'\n\n");
+         MainMenuLoop ();
     }else if (response == "2"){
-      System.Console.WriteLine ("\n'Ambitnie!' odpowiada karczmarz. 'Mamy w okolicy trochę ruin, pewnie są w nich jakieś skarby. Możesz też zapolować na potwory, ich skóry są bardzo cenne.'");
+      System.Console.WriteLine ("\n'Ambitnie!' odpowiada karczmarz. 'Mamy w okolicy trochę ruin, pewnie są w nich jakieś skarby. Możesz też zapolować na potwory, ich skóry są bardzo cenne.'\n\n");
+         MainMenuLoop ();
     }else if (response == "3"){
-      System.Console.WriteLine ("\n'Przygody na pewno ci w tych okoliach nie braknie' odpowiada karczmarz. 'Wystarczy wyjść na dwór, a jakaś sama z pewnością cię znajdzie.'");
+      System.Console.WriteLine ("\n'Przygody na pewno ci w tych okoliach nie braknie' odpowiada karczmarz. 'Wystarczy wyjść na dwór, a jakaś sama z pewnością cię znajdzie.'\n\n");
     }else{
-      System.Console.WriteLine ("\n'Nie do końca rozumiem o czym mówisz' odpowiada karczmarz, po czym macha zbywająco ręką. 'To pewnie przez to, że jesteś obcokrajowcem. To co, co zamierzasz teraz zrobić?'");
+      System.Console.WriteLine ("\n'Nie do końca rozumiem o czym mówisz' odpowiada karczmarz, po czym macha zbywająco ręką. 'To pewnie przez to, że jesteś obcokrajowcem. '\n\n");
+         MainMenuLoop ();
     };
 
-   MainMenuLoop ();
 
   }
 
-//public void GameStartResponse
 
 
 }
