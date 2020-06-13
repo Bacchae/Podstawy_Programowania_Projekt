@@ -1,12 +1,14 @@
 using System;
 
 class Game {
-  Player playerOne, playerTwo;
+  Player playerOne;
   GamesRecord gamesRecord;
 
   public Game () {
+    System.Console.WriteLine ("Wchodzisz do karczmy. Zza lady spogląda na ciebie karczmarz i mówi: 'Podaj mi swoje imię, podróżniku.'");
     playerOne = new Player ();
-    playerTwo = new Player ();
+    string playerTwoChoice = null;
+    GetRandomWeapon ();
     gamesRecord = new GamesRecord ();
     MainMenuLoop ();
   }
@@ -36,6 +38,16 @@ class Game {
   public int GetRandomWeapon ()
   {
     int weapon = new Random().Next(1,3);
+    if(weapon == 1){
+      playerTwoChoice = "Rock";
+      return playerTwoChoice;
+    }else if(weapon == 2){
+      playerTwoChoice = "Paper";
+      return playerTwoChoice;
+    }else if(weapon == 3){
+      playerTwoChoice = "Scissors";
+      return playerTwoChoice;
+    }
     return weapon;
   }
 
@@ -64,8 +76,8 @@ class Game {
       System.Console.Clear ();
       string firstPlayerChoiceString = GetPlayerInput(playerOne);
 
-      System.Console.Clear ();
-      string secondPlayerChoiceString = GetPlayerInput(playerTwo);
+     // System.Console.Clear ();
+      //string secondPlayerChoiceString = GetPlayerInput(playerTwo);
 
       System.Console.Clear ();
 

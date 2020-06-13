@@ -1,11 +1,12 @@
 using System;
+using static System.Console;
 
+class MainClass {
 
-public class Maing
-{
-  
   public static void Main (string[] args) {
+
     Game game = new Game();
+  }
 }
 
 /*
@@ -79,8 +80,10 @@ public class Maing
       return winner;
     }
 
-*/
+
 
 }
+*/
+
 
 

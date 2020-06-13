@@ -10,7 +10,7 @@ public class Player {
   }
 
   public void SetPlayerName () {
-    System.Console.Write("Please enter player name: ");
+    System.Console.Write("Twoje imię to: ");
     playerName = System.Console.ReadLine();
   }
 
