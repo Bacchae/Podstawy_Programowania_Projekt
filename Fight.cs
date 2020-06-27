@@ -16,47 +16,47 @@ class Fight {
   
   public void InitializeFight () {
 
-    do{
+   // do{
 
       System.Console.Clear ();
-      string firstPlayerChoiceString = GetPlayerInput();
-      string secondPlayerChoiceString = GetRandomWeapon ();
+      int currentHealth = 3;
 
 
-      System.Console.Clear ();
+     // System.Console.Clear ();
 
      // string gameResult = DetermineWinner(firstPlayerChoiceString, secondPlayerChoiceString);
 
     //  gamesRecord.AddRecord(firstPlayerChoiceString, secondPlayerChoiceString, gameResult); 
 
-      FightLoop();
-
+      FightLoop(currentHealth);
+/*
       System.Console.WriteLine("Do you want to play again? y/n");
     }while(System.Console.ReadLine() == "y");
-    game.AdventureMenu();
+    game.AdventureMenu();*/
   }
 
-public void FightLoop() {
+public void FightLoop(int currentHealth) {
 
-     //   int currentHealth = playerOne.health;
+      //int currentHealth = 3;
+      //  int monsterHealth = 3;
 
-    /*  string firstPlayerChoiceString, string secondPlayerChoiceString 
-    
-    do{  
+    while (currentHealth > 0)
+    {
+    //  GetCurrentHealth();
 
-        string gameResult = DetermineWinner(firstPlayerChoiceString, secondPlayerChoiceString);
+      string firstPlayerChoiceString = GetPlayerInput();
+      string secondPlayerChoiceString = GetRandomWeapon ();
 
-        gamesRecord.AddRecord(firstPlayerChoiceString, secondPlayerChoiceString, gameResult); 
-        currentHealth = currentHealth - 1;
-      }while(currentHealth != 0);
-    return game.AdventureMenu(); */
+      string gameResult = DetermineWinner(firstPlayerChoiceString, secondPlayerChoiceString, currentHealth);
 
-      System.Console.WriteLine ("Przegrałeś!");
-      game.AdventureMenu();
+      gamesRecord.AddRecord(firstPlayerChoiceString, secondPlayerChoiceString, gameResult); 
+
+    if (currentHealth == 0)
+        break;
+    }  
+   // game.AdventureMenu();
 
   }
-
-
 
   public string GetPlayerInput (){
       string rawInput;
@@ -91,7 +91,7 @@ public void FightLoop() {
     }
 
 
-  public string DetermineWinner (string playerOneChoice, string playerTwoChoice){
+  public dynamic DetermineWinner (string playerOneChoice, string playerTwoChoice, int currentHealth){
        System.Console.WriteLine ("Wybrałeś broń {0}. Potwór wybrał broń {1}", playerOneChoice, playerTwoChoice);
 
     if (playerOneChoice == playerTwoChoice){
@@ -106,9 +106,10 @@ public void FightLoop() {
     }
     else{
       System.Console.WriteLine ("Przegrałeś!");
-      return "Player Two won";
+      currentHealth = currentHealth - 1;
+            System.Console.WriteLine ("Zdrowie {0}", currentHealth);
+      return currentHealth;
     }
   }
-
 
 }

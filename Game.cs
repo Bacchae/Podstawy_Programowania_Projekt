@@ -132,6 +132,7 @@ class Game {
       if (input == ConsoleKey.D1){
         fight = new Fight();
         fight.InitializeFight();
+        AdventureMenu();
       }
       else if (input == ConsoleKey.D2){
         fight.InitializeFight();
