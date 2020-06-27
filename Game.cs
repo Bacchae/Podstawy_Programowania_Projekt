@@ -7,7 +7,7 @@ class Game {
   GamesRecord gamesRecord;
 
   public Game () {
-    System.Console.WriteLine ("Wchodzisz do karczmy. Zza lady spogląda na ciebie karczmarz i mówi: 'Podaj mi swoje imię, podróżniku.'\n");
+    System.Console.WriteLine ("Wchodzisz do karczmy. Zza lady spogląda na ciebie karczmarz i mówi: 'Jak masz na imię, podróżniku?'\n");
     playerOne = new Player ();
     string playerName = playerOne.playerName;
 
@@ -124,15 +124,14 @@ class Game {
       System.Console.WriteLine ("Co zamierzasz teraz zrobić?\n\t[1] Walcz z potworem\n\t[2] Wyrusz na przygodę (WIP)\n\t[3] Odwiedź sklep(WIP)\n\t[ESC] Exit");
  
 
-      if (System.Console.ReadLine() == "1"){
-        game = new Game();
-        game.Play();
+      if (System.input.Key == System.ConsoleKey.D1){
+        Play ();
       }
-      else if (System.Console.ReadLine() == "2"){
-        DisplayRules(false);
+      else if (System.input.Key == System.ConsoleKey.D2){
+        Play ();
       }
-      else if (System.Console.ReadLine() == "3"){
-        gamesRecord.DisplayGamesHistory();
+      else if (System.input.Key == System.ConsoleKey.D3){
+        Play ();
       }
 
   }
