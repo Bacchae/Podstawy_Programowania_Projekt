@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 class Game {
   Player playerOne;
@@ -14,12 +16,6 @@ class Game {
   //  MainMenuLoop ();
   }
 
-  public void DisplayRules (bool withWelcomeMessage = true) {
-    if (withWelcomeMessage) {
-      System.Console.WriteLine ("Welcome to a simple Rock-Paper-Scissors game!");
-    }
-    System.Console.WriteLine ("The rules are very simple - each player chooses Rock, Paper or Scissors choice by entering the choice's number\n[1] Rock\n[2] Paper\n[3] Scissors\nand confirm it by clicking Enter.\nAfter both player choose, the winner is determined. After each game the application will ask the players if they want to continue, and if the player repond with anything else than [y]es than the game finishes and presents the record of the last up to 10 games.\n\nHave fun!");
-  }
 
   public string GetPlayerInput (Player player){
     string rawInput;
@@ -95,26 +91,7 @@ class Game {
       System.Console.WriteLine("Do you want to play again? y/n");
 
     }while(System.Console.ReadLine() == "y");
-    MainMenuLoop ();
-  }
-
-
-  public void MainMenuLoop (){
-      //System.Console.Clear();
-      System.Console.WriteLine ("Co zamierzasz teraz zrobić?\n\t[1] Walcz z potworem\n\t[2] Show rules\n\t[3] Display last games' record\n\t[ESC] Exit");
- 
-
-
-      if (System.Console.ReadLine() == "1"){
-        Play();
-      }
-      else if (System.Console.ReadLine() == "2"){
-        DisplayRules(false);
-      }
-      else if (System.Console.ReadLine() == "3"){
-        gamesRecord.DisplayGamesHistory();
-      }
-
+    AdventureMenu ();
   }
 
 
@@ -128,21 +105,37 @@ class Game {
 
     if(response == "1"){
       System.Console.WriteLine ("\n'To wspaniałe ziemie, ale musisz być ostrożny' odpowiada karczmarz. 'W okolicy czai się wiele potworów, lepiej mieć broń w pogotowiu.'\n\n");
-         MainMenuLoop ();
+         AdventureMenu ();
     }else if (response == "2"){
       System.Console.WriteLine ("\n'Ambitnie!' odpowiada karczmarz. 'Mamy w okolicy trochę ruin, pewnie są w nich jakieś skarby. Możesz też zapolować na potwory, ich skóry są bardzo cenne.'\n\n");
-         MainMenuLoop ();
+         AdventureMenu ();
     }else if (response == "3"){
       System.Console.WriteLine ("\n'Przygody na pewno ci w tych okoliach nie braknie' odpowiada karczmarz. 'Wystarczy wyjść na dwór, a jakaś sama z pewnością cię znajdzie.'\n\n");
     }else{
       System.Console.WriteLine ("\n'Nie do końca rozumiem o czym mówisz' odpowiada karczmarz, po czym macha zbywająco ręką. 'To pewnie przez to, że jesteś obcokrajowcem. '\n\n");
-         MainMenuLoop ();
+         AdventureMenu ();
     };
 
 
   }
 
+ public void AdventureMenu (){
+      //System.Console.Clear();
+      System.Console.WriteLine ("Co zamierzasz teraz zrobić?\n\t[1] Walcz z potworem\n\t[2] Wyrusz na przygodę (WIP)\n\t[3] Odwiedź sklep(WIP)\n\t[ESC] Exit");
+ 
 
+      if (System.Console.ReadLine() == "1"){
+        game = new Game();
+        game.Play();
+      }
+      else if (System.Console.ReadLine() == "2"){
+        DisplayRules(false);
+      }
+      else if (System.Console.ReadLine() == "3"){
+        gamesRecord.DisplayGamesHistory();
+      }
+
+  }
 
 }
 
