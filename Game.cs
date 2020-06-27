@@ -7,7 +7,7 @@ class Game {
   GamesRecord gamesRecord;
 
   public Game () {
-    System.Console.WriteLine ("Wchodzisz do karczmy. Zza lady spogląda na ciebie karczmarz i mówi: 'Jak masz na imię, podróżniku?'\n");
+    System.Console.WriteLine ("\n\nWchodzisz do karczmy. Zza lady spogląda na ciebie karczmarz i mówi: 'Jak masz na imię, podróżniku?'\n");
     playerOne = new Player ();
     string playerName = playerOne.playerName;
 
@@ -20,7 +20,7 @@ class Game {
   public string GetPlayerInput (Player player){
     string rawInput;
     string properInput;
-    System.Console.WriteLine ("Wybierz swoją broń:\n[1] Miecz\n[2] Topór\n[3] Włócznia");
+    System.Console.WriteLine ("\n\nWybierz swoją broń:\n[1] Miecz\n[2] Topór\n[3] Włócznia");
     rawInput = System.Console.ReadLine();
     while (rawInput != "1" && rawInput != "2" && rawInput != "3") {
         System.Console.WriteLine ("Wrong input. Please enter correct one.\nPlayer One, choose:\n[1] Miecz\n[2] Topór\n[3] Włócznia");
@@ -98,21 +98,21 @@ class Game {
   public void GameStartChat (string playerName){
 
 
-    System.Console.WriteLine ("\n'{0}, huh? Nigdy nie słyszałem takiego imienia, musisz być tutaj nowy. Tak więc powiedz mi {0}, co cię tutaj sprowadza?'\n\nOdpowiadasz:\n[1] Jestem przejazdem, chcę zwiedzić okolicę\n[2] Przybyłem w poszukiwaniu bogactwa\n[3] Szukam przygody", playerName);
+    System.Console.WriteLine ("\n\n'{0}, huh? Nigdy nie słyszałem takiego imienia, musisz być tutaj nowy. Tak więc powiedz mi {0}, co cię tutaj sprowadza?'\n\nOdpowiadasz:\n[1] Jestem przejazdem, chcę zwiedzić okolicę\n[2] Przybyłem w poszukiwaniu bogactwa\n[3] Szukam przygody", playerName);
 
     string response;
     response = System.Console.ReadLine();
 
     if(response == "1"){
-      System.Console.WriteLine ("\n'To wspaniałe ziemie, ale musisz być ostrożny' odpowiada karczmarz. 'W okolicy czai się wiele potworów, lepiej mieć broń w pogotowiu.'\n\n");
+      System.Console.WriteLine ("\n'To wspaniałe ziemie, ale musisz być ostrożny' odpowiada karczmarz. 'W okolicy czai się wiele potworów, lepiej mieć broń w pogotowiu.'\n");
          AdventureMenu ();
     }else if (response == "2"){
       System.Console.WriteLine ("\n'Ambitnie!' odpowiada karczmarz. 'Mamy w okolicy trochę ruin, pewnie są w nich jakieś skarby. Możesz też zapolować na potwory, ich skóry są bardzo cenne.'\n\n");
          AdventureMenu ();
     }else if (response == "3"){
-      System.Console.WriteLine ("\n'Przygody na pewno ci w tych okoliach nie braknie' odpowiada karczmarz. 'Wystarczy wyjść na dwór, a jakaś sama z pewnością cię znajdzie.'\n\n");
+      System.Console.WriteLine ("\n'Przygody na pewno ci w tych okoliach nie braknie' odpowiada karczmarz. 'Wystarczy wyjść na dwór, a jakaś sama z pewnością cię znajdzie.'\n");
     }else{
-      System.Console.WriteLine ("\n'Nie do końca rozumiem o czym mówisz' odpowiada karczmarz, po czym macha zbywająco ręką. 'To pewnie przez to, że jesteś obcokrajowcem. '\n\n");
+      System.Console.WriteLine ("\n'Nie do końca rozumiem o czym mówisz' odpowiada karczmarz, po czym macha zbywająco ręką. 'To pewnie przez to, że jesteś obcokrajowcem. '\n");
          AdventureMenu ();
     };
 
@@ -124,13 +124,13 @@ class Game {
       System.Console.WriteLine ("Co zamierzasz teraz zrobić?\n\t[1] Walcz z potworem\n\t[2] Wyrusz na przygodę (WIP)\n\t[3] Odwiedź sklep(WIP)\n\t[ESC] Exit");
  
 
-      if (System.input.Key == System.ConsoleKey.D1){
+      if (System.Console.ReadLine() == "1"){
         Play ();
       }
-      else if (System.input.Key == System.ConsoleKey.D2){
+      else if (System.Console.ReadLine() == "2"){
         Play ();
       }
-      else if (System.input.Key == System.ConsoleKey.D3){
+      else if (System.Console.ReadLine() == "3"){
         Play ();
       }
 

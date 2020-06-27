@@ -1,4 +1,7 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 
 class GameController {
   Game game;
@@ -10,27 +13,30 @@ class GameController {
 
  public void MainMenuLoop (){
       //System.Console.Clear();
-      System.Console.WriteLine ("Witaj w grze, podróżniku. Wybierz, co chcesz zrobić:  \n\n\t[1] Rozpocznij\n\t[2] O grze\n\t[3] (WIP)\n\t[ESC] Exit");
- 
+     // ConsoleKeyInfo input = Console.ReadKey(true);
 
-      if (System.input.Key == System.ConsoleKey.D1){
+      System.Console.WriteLine ("Witaj w grze, podróżniku. Wybierz, co chcesz zrobić:  \n\n\t[1] Rozpocznij\n\t[2] O grze\n\t[3] (WIP)\n\t[ESC] Exit");
+
+      var input = Console.ReadKey(true).Key; 
+
+      if (input == ConsoleKey.D1){
         game = new Game();
         game.Play();
-      } 
-      else if (System.input.Key == System.ConsoleKey.D2){
+      }
+      else if(input == ConsoleKey.D2){
         DisplayRules();
       }
-      else if (System.input.Key == System.ConsoleKey.D3){
+      else if(input == ConsoleKey.D3){
         gamesRecord.DisplayGamesHistory();
       }
       else{
-        System.Console.WriteLine ("Niepoprawny input. Proszę, spróbuj ponownie.");
+        System.Console.WriteLine ("\n\nNiepoprawny input. Proszę, spróbuj ponownie.");
         MainMenuLoop ();       
       }
   }
 
   public void DisplayRules () {
-    System.Console.WriteLine ("W grze wcielasz się w poszukiwacza przygód, który dociera do nowej, nieznanej krainy. Walcz z potworami, podróżuj, ulepszaj swoją broń i przede wszystkim – baw się dobrze!\n\n");
+    System.Console.WriteLine ("\n\nW grze wcielasz się w poszukiwacza przygód, który dociera do nowej, nieznanej krainy. Walcz z potworami, podróżuj, ulepszaj swoją broń i przede wszystkim – baw się dobrze!\n\n");
     MainMenuLoop ();
   }
 
