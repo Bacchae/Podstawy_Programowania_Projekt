@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 
 class Fight {
-  Player playerOne;
+ // Player playerOne;
   Game game;
   GamesRecord gamesRecord;
+  GameMenu gameMenu;
 
 
   public Fight () {
@@ -16,33 +17,17 @@ class Fight {
   
   public void InitializeFight () {
 
-   // do{
-
       System.Console.Clear ();
       int currentHealth = 3;
-
-
-     // System.Console.Clear ();
-
-     // string gameResult = DetermineWinner(firstPlayerChoiceString, secondPlayerChoiceString);
-
-    //  gamesRecord.AddRecord(firstPlayerChoiceString, secondPlayerChoiceString, gameResult); 
-
       FightLoop(currentHealth);
-/*
-      System.Console.WriteLine("Do you want to play again? y/n");
-    }while(System.Console.ReadLine() == "y");
-    game.AdventureMenu();*/
+
   }
 
 public void FightLoop(int currentHealth) {
 
-      //int currentHealth = 3;
-      //  int monsterHealth = 3;
 
-    while (currentHealth > 0)
+    while (currentHealth != 0)
     {
-    //  GetCurrentHealth();
 
       string firstPlayerChoiceString = GetPlayerInput();
       string secondPlayerChoiceString = GetRandomWeapon ();
@@ -51,10 +36,14 @@ public void FightLoop(int currentHealth) {
 
       gamesRecord.AddRecord(firstPlayerChoiceString, secondPlayerChoiceString, gameResult); 
 
+      System.Console.WriteLine ("Twoje HP: {0}", currentHealth);
+
     if (currentHealth == 0)
-        break;
+        break;     
     }  
-   // game.AdventureMenu();
+        gameMenu = new GameMenu();
+     //   fight.InitializeFight();
+
 
   }
 
@@ -105,9 +94,9 @@ public void FightLoop(int currentHealth) {
       return "Player One won";
     }
     else{
-      System.Console.WriteLine ("Przegrałeś!");
+      System.Console.WriteLine ("Otrzymujesz obrażenia!");
       currentHealth = currentHealth - 1;
-            System.Console.WriteLine ("Zdrowie {0}", currentHealth);
+      FightLoop( currentHealth);
       return currentHealth;
     }
   }

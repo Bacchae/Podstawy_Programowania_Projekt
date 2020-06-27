@@ -8,10 +8,13 @@ class Game {
   Fight fight;
 
   public Game () {
+
     System.Console.WriteLine ("\n\nWchodzisz do karczmy. Zza lady spogląda na ciebie karczmarz i mówi: 'Jak masz na imię, podróżniku?'\n");
   //  gamesRecord = new GamesRecord ();
     playerOne = new Player ();
   //  MainMenuLoop ();
+
+
   }
 
 
@@ -102,7 +105,6 @@ class Game {
 
   public void GameStartChat (string playerName){
 
-
     System.Console.WriteLine ("\n\n'{0}, huh? Nigdy nie słyszałem takiego imienia, musisz być tutaj nowy. Tak więc powiedz mi {0}, co cię tutaj sprowadza?'\n\nOdpowiadasz:\n[1] Jestem przejazdem, chcę zwiedzić okolicę\n[2] Przybyłem w poszukiwaniu bogactwa\n[3] Szukam przygody", playerName);
 
     var input = Console.ReadKey(true).Key; 
@@ -120,19 +122,18 @@ class Game {
          AdventureMenu ();
     };
 
-
   }
 
  public void AdventureMenu (){
-      //System.Console.Clear();
-      System.Console.WriteLine ("Co zamierzasz teraz zrobić?\n\t[1] Walcz z potworem\n\t[2] Wyrusz na przygodę (WIP)\n\t[3] Odwiedź kowala(WIP)\n\t[ESC] Exit");
+      System.Console.Clear();
+      System.Console.WriteLine ("\n Co zamierzasz teraz zrobić?\n\t[1] Walcz z potworem\n\t[2] Wyrusz na przygodę (WIP)\n\t[3] Odwiedź kowala(WIP)\n\t[ESC] Exit");
   
       var input = Console.ReadKey(true).Key; 
       
       if (input == ConsoleKey.D1){
         fight = new Fight();
         fight.InitializeFight();
-        AdventureMenu();
+
       }
       else if (input == ConsoleKey.D2){
         fight.InitializeFight();
