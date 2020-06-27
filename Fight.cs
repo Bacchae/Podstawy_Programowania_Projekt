@@ -8,33 +8,57 @@ class Fight {
   Game game;
   GamesRecord gamesRecord;
 
+
   public Fight () {
+      gamesRecord = new GamesRecord();
+  }
+  
+  
+  public void InitializeFight () {
 
     do{
 
       System.Console.Clear ();
-      string firstPlayerChoiceString = GetPlayerInput(playerOne);
-
-     //System.Console.Clear ();
-     // string secondPlayerChoiceString = GetPlayerInput(playerTwo);
-
+      string firstPlayerChoiceString = GetPlayerInput();
       string secondPlayerChoiceString = GetRandomWeapon ();
 
 
       System.Console.Clear ();
 
-      string gameResult = DetermineWinner(firstPlayerChoiceString, secondPlayerChoiceString);
+     // string gameResult = DetermineWinner(firstPlayerChoiceString, secondPlayerChoiceString);
 
-      gamesRecord.AddRecord(firstPlayerChoiceString, secondPlayerChoiceString, gameResult); 
+    //  gamesRecord.AddRecord(firstPlayerChoiceString, secondPlayerChoiceString, gameResult); 
+
+      FightLoop();
 
       System.Console.WriteLine("Do you want to play again? y/n");
-
     }while(System.Console.ReadLine() == "y");
     game.AdventureMenu();
   }
 
+public void FightLoop() {
 
-  public string GetPlayerInput (Player player){
+     //   int currentHealth = playerOne.health;
+
+    /*  string firstPlayerChoiceString, string secondPlayerChoiceString 
+    
+    do{  
+
+        string gameResult = DetermineWinner(firstPlayerChoiceString, secondPlayerChoiceString);
+
+        gamesRecord.AddRecord(firstPlayerChoiceString, secondPlayerChoiceString, gameResult); 
+        currentHealth = currentHealth - 1;
+      }while(currentHealth != 0);
+    return game.AdventureMenu(); */
+
+      System.Console.WriteLine ("Przegrałeś!");
+      game.AdventureMenu();
+
+  }
+
+
+
+  public string GetPlayerInput (){
       string rawInput;
       string properInput;
       System.Console.WriteLine ("Wybierz swoją broń:\n[1] Miecz\n[2] Topór\n[3] Włócznia");
@@ -67,23 +91,24 @@ class Fight {
     }
 
 
-    public string DetermineWinner (string playerOneChoice, string playerTwoChoice){
-        System.Console.WriteLine ("Wybrałeś broń {0}. Potwór wybrał broń {1}", playerOneChoice, playerTwoChoice);
+  public string DetermineWinner (string playerOneChoice, string playerTwoChoice){
+       System.Console.WriteLine ("Wybrałeś broń {0}. Potwór wybrał broń {1}", playerOneChoice, playerTwoChoice);
 
-      if (playerOneChoice == playerTwoChoice){
-          System.Console.WriteLine ("Remis!");
-          return "draw";
-      }
-      else if ((playerOneChoice == "Miecz" && playerTwoChoice == "Włócznia") ||
-              (playerOneChoice == "Topór" && playerTwoChoice == "Miecz") ||
-              (playerOneChoice == "Włócznia" && playerTwoChoice == "Topór")){
-        System.Console.WriteLine ("Zwycięstwo!");
-        return "Player One won";
-      }
-      else{
-        System.Console.WriteLine ("Przegrałeś!");
-        return "Player Two won";
-      }
+    if (playerOneChoice == playerTwoChoice){
+        System.Console.WriteLine ("Remis!");
+        return "draw";
     }
-
+    else if ((playerOneChoice == "Miecz" && playerTwoChoice == "Włócznia") ||
+            (playerOneChoice == "Topór" && playerTwoChoice == "Miecz") ||
+            (playerOneChoice == "Włócznia" && playerTwoChoice == "Topór")){
+      System.Console.WriteLine ("Zwycięstwo!");
+      return "Player One won";
+    }
+    else{
+      System.Console.WriteLine ("Przegrałeś!");
+      return "Player Two won";
+    }
   }
+
+
+}

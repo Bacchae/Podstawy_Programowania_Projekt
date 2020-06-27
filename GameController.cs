@@ -21,7 +21,7 @@ class GameController {
 
       if (input == ConsoleKey.D1){
         game = new Game();
-        game.Play();
+        game.NewGame();
       }
       else if(input == ConsoleKey.D2){
         DisplayRules();

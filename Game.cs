@@ -4,19 +4,23 @@ using System.Linq;
 
 class Game {
   Player playerOne;
-  GamesRecord gamesRecord;
+ // GamesRecord gamesRecord;
   Fight fight;
 
   public Game () {
     System.Console.WriteLine ("\n\nWchodzisz do karczmy. Zza lady spogląda na ciebie karczmarz i mówi: 'Jak masz na imię, podróżniku?'\n");
+  //  gamesRecord = new GamesRecord ();
     playerOne = new Player ();
-    string playerName = playerOne.playerName;
-
-    gamesRecord = new GamesRecord ();
-    GameStartChat(playerName);
   //  MainMenuLoop ();
   }
 
+
+  public void NewGame (){
+
+    string playerName = playerOne.playerName;
+    GameStartChat(playerName);
+
+  }
 /*
   public string GetPlayerInput (Player player){
     string rawInput;
@@ -126,13 +130,14 @@ class Game {
       var input = Console.ReadKey(true).Key; 
       
       if (input == ConsoleKey.D1){
-        fight.Fight();
+        fight = new Fight();
+        fight.InitializeFight();
       }
       else if (input == ConsoleKey.D2){
-        Play ();
+        fight.InitializeFight();
       }
       else if (input == ConsoleKey.D3){
-        Play ();
+        fight.InitializeFight();
       }
 
   }
