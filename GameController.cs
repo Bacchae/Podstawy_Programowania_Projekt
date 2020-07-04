@@ -15,7 +15,7 @@ class GameController {
       //System.Console.Clear();
      // ConsoleKeyInfo input = Console.ReadKey(true);
 
-      System.Console.WriteLine ("Witaj w grze, podróżniku. Wybierz, co chcesz zrobić:  \n\n\t[1] Rozpocznij\n\t[2] O grze\n\t[3] (WIP)\n\t[ESC] Exit");
+      System.Console.WriteLine ("Witaj w grze, podróżniku. Wybierz, co chcesz zrobić:  \n\n\t[1] Rozpocznij\n\t[2] O grze\n\t[ESC] Exit");
 
       var input = Console.ReadKey(true).Key; 
 

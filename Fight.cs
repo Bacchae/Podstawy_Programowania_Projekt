@@ -28,6 +28,7 @@ public void FightLoop(int currentHealth) {
 
     while (currentHealth != 0)
     {
+      System.Console.WriteLine ("Twoje HP: {0}", currentHealth);
 
       string firstPlayerChoiceString = GetPlayerInput();
       string secondPlayerChoiceString = GetRandomWeapon ();
@@ -36,7 +37,7 @@ public void FightLoop(int currentHealth) {
 
       gamesRecord.AddRecord(firstPlayerChoiceString, secondPlayerChoiceString, gameResult); 
 
-      System.Console.WriteLine ("Twoje HP: {0}", currentHealth);
+
 
     if (currentHealth == 0)
         break;     
@@ -44,10 +45,45 @@ public void FightLoop(int currentHealth) {
         gameMenu = new GameMenu();
      //   fight.InitializeFight();
 
-
   }
 
+
+  Dictionary<int, string> inputTable = new Dictionary<int, string> () 
+    {
+      {1, "Miech"},
+      {2, "Topór"},
+      {3, "Włócznia"}
+    };
+
+
   public string GetPlayerInput (){
+    //  var rawInput = 0;
+      string properInput;
+
+      System.Console.WriteLine ("Wybierz swoją broń:\n[1] Miecz\n[2] Topór\n[3] Włócznia\n");
+
+      ConsoleKeyInfo UserInput = System.Console.ReadKey();
+
+      int rawInput = int.Parse(UserInput.KeyChar.ToString());
+
+      while (rawInput != 1 && rawInput != 2 && rawInput != 3) {
+          System.Console.WriteLine ("Wrong input. Please enter correct one.\nPlayer One, choose:\n[1] Miecz\n[2] Topór\n[3] Włócznia");
+           System.Console.WriteLine();
+      }
+
+      if (rawInput == 1) { 
+        properInput = "Miecz"; 
+      }
+      else if (rawInput == 2) {
+         properInput = "Topór"; 
+      }
+      else { 
+        properInput = "Włócznia"; 
+      }
+      return properInput;
+    }
+
+/*  public string GetPlayerInput (){
       string rawInput;
       string properInput;
       System.Console.WriteLine ("Wybierz swoją broń:\n[1] Miecz\n[2] Topór\n[3] Włócznia");
@@ -60,7 +96,8 @@ public void FightLoop(int currentHealth) {
       else if (rawInput == "2") { properInput = "Topór"; }
       else { properInput = "Włócznia"; }
       return properInput;
-    }
+    } */
+
 
     public string GetRandomWeapon ()
     {
@@ -81,7 +118,7 @@ public void FightLoop(int currentHealth) {
 
 
   public dynamic DetermineWinner (string playerOneChoice, string playerTwoChoice, int currentHealth){
-       System.Console.WriteLine ("Wybrałeś broń {0}. Potwór wybrał broń {1}", playerOneChoice, playerTwoChoice);
+       System.Console.WriteLine ("\nWybrałeś broń {0}. Potwór wybrał broń {1}", playerOneChoice, playerTwoChoice);
 
     if (playerOneChoice == playerTwoChoice){
         System.Console.WriteLine ("Remis!");
@@ -100,5 +137,6 @@ public void FightLoop(int currentHealth) {
       return currentHealth;
     }
   }
+
 
 }
