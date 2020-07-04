@@ -8,19 +8,20 @@ class Adventure {
  // Player playerOne;
 
   public void NewAdventure () {
-    int segment = new Random().Next(1,30);
+    int segment = new Random().Next(1,3);
     GetSegment(segment);
   }
 
 
   public void GetSegment (int segment){
+    System.Console.Clear ();
     if(segment == 1){    
-      System.Console.WriteLine ("\n\nKiedy podróżujesz szlakiem, na twojej drodze staje potwór.");
+      System.Console.WriteLine ("Kiedy podróżujesz szlakiem, na twojej drodze staje potwór.\n");
         fight = new Fight();
         fight.InitializeFight();
     }
     else if(segment == 2){    
-      System.Console.WriteLine ("\n\n'Kręciłeś się po okolicy przez kilka godzin, ale nic się nie stało.\n Co zamierzasz teraz zrobić?\n\t[1] Idź dalej\n\t[2] Zawróć");
+      System.Console.WriteLine ("'Kręciłeś się po okolicy przez kilka godzin, ale nic się nie stało.\n Co zamierzasz teraz zrobić?\n\t[1] Idź dalej\n\t[2] Zawróć");
 
       var input = Console.ReadKey(true).Key; 
       

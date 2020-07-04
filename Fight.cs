@@ -17,7 +17,7 @@ class Fight {
   
   public void InitializeFight () {
 
-      System.Console.Clear ();
+    //  System.Console.Clear ();
       int currentHealth = 3;
       FightLoop(currentHealth);
 
