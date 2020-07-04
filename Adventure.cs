@@ -5,11 +5,9 @@ using System.Linq;
 class Adventure {
   GameMenu gameMenu;
   Fight fight;
-  Player playerOne;
-
+ // Player playerOne;
 
   public void NewAdventure () {
-    int Gold = playerOne.currentGold;
     int segment = new Random().Next(1,30);
     GetSegment(segment);
   }
@@ -36,9 +34,10 @@ class Adventure {
     }
     else{    
       int newGold = new Random().Next(10,100);
+     // int currentGold = playerOne.UpdateGold(newGold);
      // int gold = newGold + playerOne.currentGold;
      // int nowGold = playerOne.currentGold;
-      System.Console.WriteLine ("Podróżując po bezdrożach, natrafiaz na zwłoki innego śmiałka, któremu się nie poszczęściło. Potwory rozszarpały jego ciało na strzępy, ale ekwipunek pozostaje nietknięty.\n Znajdujesz {0} złota.\nŁacznie masz 1 złota.\n\n Co zamierzasz teraz zrobić?\n\t[1] Idź dalej\n\t[2] Zawróć", newGold);
+      System.Console.WriteLine ("Podróżując po bezdrożach, natrafiaz na zwłoki innego śmiałka, któremu się nie poszczęściło. Potwory rozszarpały jego ciało na strzępy, ale ekwipunek pozostaje nietknięty.\n Znajdujesz {0} złota.\n\n Co zamierzasz teraz zrobić?\n\t[1] Idź dalej\n\t[2] Zawróć", newGold);
       
       var input = Console.ReadKey(true).Key; 
       

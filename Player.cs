@@ -21,11 +21,7 @@ public class Player {
     SetPlayerName();
   }
 
-  public int UpdateGold (int newGold) {
 
-    currentGold = currentGold + newGold;
-    return currentGold;
-  }
 
 }
 
