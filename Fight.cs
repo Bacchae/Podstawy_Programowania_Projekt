@@ -47,13 +47,13 @@ public void FightLoop(int currentHealth) {
 
   }
 
-
+/*
   Dictionary<int, string> inputTable = new Dictionary<int, string> () 
     {
       {1, "Miech"},
       {2, "Topór"},
       {3, "Włócznia"}
-    };
+    };*/
 
 
   public string GetPlayerInput (){
@@ -83,20 +83,6 @@ public void FightLoop(int currentHealth) {
       return properInput;
     }
 
-/*  public string GetPlayerInput (){
-      string rawInput;
-      string properInput;
-      System.Console.WriteLine ("Wybierz swoją broń:\n[1] Miecz\n[2] Topór\n[3] Włócznia");
-      rawInput = System.Console.ReadLine();
-      while (rawInput != "1" && rawInput != "2" && rawInput != "3") {
-          System.Console.WriteLine ("Wrong input. Please enter correct one.\nPlayer One, choose:\n[1] Miecz\n[2] Topór\n[3] Włócznia");
-          rawInput = System.Console.ReadLine();
-      }
-      if (rawInput == "1") { properInput = "Miecz"; }
-      else if (rawInput == "2") { properInput = "Topór"; }
-      else { properInput = "Włócznia"; }
-      return properInput;
-    } */
 
 
     public string GetRandomWeapon ()
@@ -127,7 +113,7 @@ public void FightLoop(int currentHealth) {
     else if ((playerOneChoice == "Miecz" && playerTwoChoice == "Włócznia") ||
             (playerOneChoice == "Topór" && playerTwoChoice == "Miecz") ||
             (playerOneChoice == "Włócznia" && playerTwoChoice == "Topór")){
-      System.Console.WriteLine ("Zwycięstwo!");
+      System.Console.WriteLine ("Zadajesz obrażenia!");
       return "Player One won";
     }
     else{

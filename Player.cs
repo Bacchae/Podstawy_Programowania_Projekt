@@ -5,6 +5,7 @@ public class Player {
 
   public string playerName;
   public int health = 10;
+  public int currentGold = 0;
 
   public Player (string playerName)
   {
@@ -20,12 +21,11 @@ public class Player {
     SetPlayerName();
   }
 
-  public int UpdateHealth () {
-    int health = 11;
-    return health;
+  public int UpdateGold (int newGold) {
+
+    currentGold = currentGold + newGold;
+    return currentGold;
   }
-
-
 
 }
 
