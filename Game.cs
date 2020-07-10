@@ -9,8 +9,8 @@ class Game {
   Adventure adventure;
 
   public Game () {
-
-    System.Console.WriteLine ("\n\nWchodzisz do karczmy. Zza lady spogląda na ciebie karczmarz i mówi: 'Jak masz na imię, podróżniku?'\n");
+    System.Console.Clear ();
+    System.Console.WriteLine ("Wchodzisz do karczmy. Zza lady spogląda na ciebie karczmarz i mówi: 'Jak masz na imię, podróżniku?'\n");
   //  gamesRecord = new GamesRecord ();
     playerOne = new Player ();
 
