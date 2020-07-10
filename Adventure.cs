@@ -30,6 +30,8 @@ class Adventure {
       }
       else if (input == ConsoleKey.D2){
         gameMenu = new GameMenu();
+      }else{      
+        GetSegment(segment);
       }
 
     }
@@ -47,6 +49,9 @@ class Adventure {
       }
       else if (input == ConsoleKey.D2){
         gameMenu = new GameMenu();
+      }
+      else{      
+        GetSegment(segment);
       }
     }
   }

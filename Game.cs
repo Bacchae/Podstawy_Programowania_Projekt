@@ -47,7 +47,7 @@ System.Console.Clear ();
   }
 
  public void AdventureMenu (){
-      System.Console.WriteLine ("\n Co zamierzasz teraz zrobić?\n\t[1] Walcz z potworem\n\t[2] Wyrusz na przygodę \n\t[3] Odwiedź kowala(WIP)\n\t[ESC] Exit");
+      System.Console.WriteLine ("\n Co zamierzasz teraz zrobić?\n\t[1] Walcz z potworem\n\t[2] Wyrusz na przygodę \n\t[3] Odwiedź kowala(WIP)\n");
   
       var input = Console.ReadKey(true).Key; 
       
@@ -62,7 +62,9 @@ System.Console.Clear ();
       }
       else if (input == ConsoleKey.D3){
         fight.InitializeFight();
-      }
+      }else{
+        System.Console.WriteLine ("Niepoprawny wybór, spróbuj ponownie.");
+        AdventureMenu (); }
 
   }
 
