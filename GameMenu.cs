@@ -9,7 +9,7 @@ class GameMenu {
   public GameMenu () {
     
       //System.Console.Clear();
-      System.Console.WriteLine ("\n\nZakończywszy przygodę wracasz do karczmy.\n Co zamierzasz teraz zrobić?\n\t[1] Walcz z potworem\n\t[2] Wyrusz na przygodę\n\t[3] Odwiedź kowala(WIP)\n\t[ESC] Exit");
+      System.Console.WriteLine ("\n\nZakończywszy przygodę wracasz do karczmy.\n Co zamierzasz teraz zrobić?\n\t[1] Walcz z potworem\n\t[2] Wyrusz na przygodę\n\t[3] Odwiedź kowala(WIP)\n");
   
       var input = Console.ReadKey(true).Key; 
       

@@ -169,7 +169,7 @@ public void FightLoop(int currentHealth) {
         fightRecordSize = 100;
         fightRecord = new string[fightRecordSize,4];
       }
-    // fightRecordCurrentIndex = 0;
+      fightRecordCurrentIndex = 0;
       fightRecordCurrentSize = fightRecordCurrentSize++;
     }
 
