@@ -23,10 +23,7 @@ class GameMenu {
         adventure.NewAdventure ();
       }
       else if (input == ConsoleKey.D3){
-        GameMenu ();
-      }
-      else {
-        GameMenu ();
+        fight.InitializeFight();
       }
 
   }
