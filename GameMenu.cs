@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-class GameMenu {
+public class GameMenu {
   Fight fight;
   Adventure adventure;
 

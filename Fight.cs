@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-class Fight {
+class Fight : Encounter {
  // Player playerOne;
  // Game game;
 //  GamesRecord gamesRecord;
-  GameMenu gameMenu;
+ // GameMenu gameMenu;
 
 
   int fightRecordSize;
-  string[,] fightRecord;
+  IRecord[] RecordFight;
   int fightRecordCurrentIndex;
   int fightRecordCurrentSize;
   bool fightStart = true;
@@ -36,6 +36,7 @@ class Fight {
 public void FightLoop(int currentHealth) {
 
     bool death = false;
+    FightRecord();
 
     do{
       hit = false;
@@ -65,8 +66,11 @@ public void FightLoop(int currentHealth) {
        currentHealth = currentHealth - 1;
       }
 
-      FightRecord();
-      AddRecord(firstPlayerChoiceString, secondPlayerChoiceString, gameResult, turnRecord, turn); 
+    AddRecord(playerOne.LastInput, playerTwo.LastInput, gameResult);
+    AddRecord(new RecordFight(playerOne.LastInput, playerTwo.LastInput, gameResult));
+
+
+  //    AddRecord(firstPlayerChoiceString, secondPlayerChoiceString, gameResult, turnRecord, turn); 
 
   //     DisplayFightHistory ();
     
@@ -162,28 +166,23 @@ public void FightLoop(int currentHealth) {
   public void FightRecord (int recordSize = 100) {
       try {
         fightRecordSize = recordSize;
-        fightRecord = new string[fightRecordSize,4];
+        fightRecord = new IRecord[fightRecordSize];
       }
       catch (OverflowException e) {
         System.Console.WriteLine("OverflowException during FightRecord initialization: \"{0}\"\nrecordSize given was [{1}]\nSetting recordSize to 10", e.Message, recordSize);
         fightRecordSize = 100;
-        fightRecord = new string[fightRecordSize,4];
+        fightRecord = new IRecord[fightRecordSize];
       }
       fightRecordCurrentIndex = 0;
       fightRecordCurrentSize = fightRecordCurrentSize++;
     }
 
-  public void AddRecord (string playerOneChoice, string playerTwoChoice, string gameResult, string turnRecord, int turn) {
+  public void AddRecord (IRecord record) {
 
   /* System.Console.WriteLine ("Tura #{0}:\t{1}\t-\t{2},\t{3}  {4}",
           turnRecord, playerOneChoice, playerTwoChoice, gameResult, fightRecordCurrentIndex);*/
 
-
-      // Insert the record data
-      fightRecord[fightRecordCurrentIndex, 0] = playerOneChoice;
-      fightRecord[fightRecordCurrentIndex, 1] = playerTwoChoice;
-      fightRecord[fightRecordCurrentIndex, 2] = gameResult;
-      fightRecord[fightRecordCurrentIndex, 3] = turnRecord;
+      fightRecord[fightRecordCurrentIndex] = record;
 
           // Increment the fight index counter and current history size
       fightRecordCurrentIndex = (fightRecordCurrentIndex + 1)  % fightRecordSize;
@@ -197,12 +196,17 @@ public void FightLoop(int currentHealth) {
     
       System.Console.WriteLine ("\nPodsumowanie:");
       for (int i = 0; i < fightRecordCurrentSize; i++){
-        System.Console.WriteLine ("Tura #{0}:\t{1}\t-\t{2},\t{3} {4}",
-          fightRecord[i,3], fightRecord[i,0], fightRecord[i,1], fightRecord[i,2], i);
+        System.Console.WriteLine ("Game #{0}:\t{1}", i+1, gamesRecord[displayRecordIndex].ToString());
+
+    displayRecordIndex = (displayRecordIndex + 1) % gamesRecordCurrentSize;
+
 
       }
     }
 
+interface IRecord {
+  string ToString ();
+}
 
 
 

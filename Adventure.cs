@@ -2,8 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-class Adventure {
-  GameMenu gameMenu;
+class Adventure : Encounter{
+ // GameMenu gameMenu;
   Fight fight;
  // Player playerOne;
 
