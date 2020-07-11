@@ -11,7 +11,7 @@ class Fight : Encounter {
 
 
   int fightRecordSize;
-  IRecord[] RecordFight;
+  IRecord[] fightRecord;
   int fightRecordCurrentIndex;
   int fightRecordCurrentSize;
   bool fightStart = true;
@@ -66,8 +66,7 @@ public void FightLoop(int currentHealth) {
        currentHealth = currentHealth - 1;
       }
 
-    AddRecord(playerOne.LastInput, playerTwo.LastInput, gameResult);
-    AddRecord(new RecordFight(playerOne.LastInput, playerTwo.LastInput, gameResult));
+    AddRecord(new RecordFight(firstPlayerChoiceString, secondPlayerChoiceString, gameResult, turnRecord));
 
 
   //    AddRecord(firstPlayerChoiceString, secondPlayerChoiceString, gameResult, turnRecord, turn); 
@@ -177,7 +176,7 @@ public void FightLoop(int currentHealth) {
       fightRecordCurrentSize = fightRecordCurrentSize++;
     }
 
-  public void AddRecord (IRecord record) {
+  private void AddRecord (IRecord record) {
 
   /* System.Console.WriteLine ("Tura #{0}:\t{1}\t-\t{2},\t{3}  {4}",
           turnRecord, playerOneChoice, playerTwoChoice, gameResult, fightRecordCurrentIndex);*/
@@ -193,20 +192,17 @@ public void FightLoop(int currentHealth) {
     }
   
   public void DisplayFightHistory () {
-    
+      int displayRecordIndex = 0;
       System.Console.WriteLine ("\nPodsumowanie:");
       for (int i = 0; i < fightRecordCurrentSize; i++){
-        System.Console.WriteLine ("Game #{0}:\t{1}", i+1, gamesRecord[displayRecordIndex].ToString());
+        System.Console.WriteLine ("Game #{0}:\t{1}", i+1, fightRecord[displayRecordIndex].ToString());
 
-    displayRecordIndex = (displayRecordIndex + 1) % gamesRecordCurrentSize;
+    displayRecordIndex = (displayRecordIndex + 1) % fightRecordCurrentSize;
 
 
       }
     }
 
-interface IRecord {
-  string ToString ();
-}
 
 
 
