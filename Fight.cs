@@ -5,8 +5,8 @@ using System.Text;
 
 class Fight {
  // Player playerOne;
-  Game game;
-  GamesRecord gamesRecord;
+ // Game game;
+//  GamesRecord gamesRecord;
   GameMenu gameMenu;
 
 
@@ -15,13 +15,13 @@ class Fight {
   int fightRecordCurrentIndex;
   int fightRecordCurrentSize;
   bool fightStart = true;
-  int turn = 1;
-  string turnRecord = "1";
+  int turn = 0;
+  string turnRecord = "0";
   string gameResult;
   bool hit;
 
   public Fight () {
-      gamesRecord = new GamesRecord();
+     // gamesRecord = new GamesRecord();
   }
   
   
@@ -37,8 +37,7 @@ public void FightLoop(int currentHealth) {
 
     bool death = false;
 
-    while (death == false)
-    {
+    do{
       hit = false;
 
       if(fightStart == true){
@@ -51,7 +50,7 @@ public void FightLoop(int currentHealth) {
       }
 
 
-      turn = turn +1;
+      turn = turn + 1;
       string turnRecord = turn.ToString();
 
       System.Console.WriteLine ("\nTura #{0}", turn);
@@ -69,12 +68,11 @@ public void FightLoop(int currentHealth) {
       FightRecord();
       AddRecord(firstPlayerChoiceString, secondPlayerChoiceString, gameResult, turnRecord, turn); 
 
+  //     DisplayFightHistory ();
+    
+    }while (death == false);
 
-    if (death == true)
-        break;     
-    }  
-
-     DisplayFightHistory ();
+    DisplayFightHistory ();
     System.Console.WriteLine ("\nPrzegrałeś!\n");
     gameMenu = new GameMenu();
      //   fight.InitializeFight();
@@ -161,59 +159,49 @@ public void FightLoop(int currentHealth) {
   }
 
 
-public void FightRecord (int recordSize = 100) {
-    try {
-      fightRecordSize = recordSize;
-      fightRecord = new string[fightRecordSize,4];
+  public void FightRecord (int recordSize = 100) {
+      try {
+        fightRecordSize = recordSize;
+        fightRecord = new string[fightRecordSize,4];
+      }
+      catch (OverflowException e) {
+        System.Console.WriteLine("OverflowException during FightRecord initialization: \"{0}\"\nrecordSize given was [{1}]\nSetting recordSize to 10", e.Message, recordSize);
+        fightRecordSize = 100;
+        fightRecord = new string[fightRecordSize,4];
+      }
+    // fightRecordCurrentIndex = 0;
+      fightRecordCurrentSize = fightRecordCurrentSize++;
     }
-    catch (OverflowException e) {
-      System.Console.WriteLine("OverflowException during FightRecord initialization: \"{0}\"\nrecordSize given was [{1}]\nSetting recordSize to 10", e.Message, recordSize);
-      fightRecordSize = 100;
-      fightRecord = new string[fightRecordSize,4];
-    }
-   // fightRecordCurrentIndex = 0;
-    fightRecordCurrentSize = fightRecordCurrentSize++;
-  }
 
   public void AddRecord (string playerOneChoice, string playerTwoChoice, string gameResult, string turnRecord, int turn) {
 
-/* System.Console.WriteLine ("Tura #{0}:\t{1}\t-\t{2},\t{3}  {4}",
-        turnRecord, playerOneChoice, playerTwoChoice, gameResult, fightRecordCurrentIndex);*/
+  /* System.Console.WriteLine ("Tura #{0}:\t{1}\t-\t{2},\t{3}  {4}",
+          turnRecord, playerOneChoice, playerTwoChoice, gameResult, fightRecordCurrentIndex);*/
 
 
-    // Insert the record data
-    fightRecord[fightRecordCurrentIndex, 0] = playerOneChoice;
-    fightRecord[fightRecordCurrentIndex, 1] = playerTwoChoice;
-    fightRecord[fightRecordCurrentIndex, 2] = gameResult;
-    fightRecord[fightRecordCurrentIndex, 3] = turnRecord;
+      // Insert the record data
+      fightRecord[fightRecordCurrentIndex, 0] = playerOneChoice;
+      fightRecord[fightRecordCurrentIndex, 1] = playerTwoChoice;
+      fightRecord[fightRecordCurrentIndex, 2] = gameResult;
+      fightRecord[fightRecordCurrentIndex, 3] = turnRecord;
 
-        // Increment the fight index counter and current history size
-    fightRecordCurrentIndex = (fightRecordCurrentIndex + 1)  % fightRecordSize;
+          // Increment the fight index counter and current history size
+      fightRecordCurrentIndex = (fightRecordCurrentIndex + 1)  % fightRecordSize;
 
-    if (fightRecordCurrentSize < fightRecordSize){
-      fightRecordCurrentSize++;
+      if (fightRecordCurrentSize < fightRecordSize){
+        fightRecordCurrentSize++;
+      }
     }
-  //  System.Console.WriteLine("\n{0}\n", FightRecordCurrentIndex);
-  }
   
   public void DisplayFightHistory () {
-    // Initialize indexer in the beginning of the history
-    int displayRecordIndex;
-    if (fightRecordCurrentSize < fightRecordSize){
-      displayRecordIndex = 0;
-    }
-    else {
-      displayRecordIndex = fightRecordCurrentIndex;
-    }
+    
+      System.Console.WriteLine ("\nPodsumowanie:");
+      for (int i = 0; i < fightRecordCurrentSize; i++){
+        System.Console.WriteLine ("Tura #{0}:\t{1}\t-\t{2},\t{3} {4}",
+          fightRecord[i,3], fightRecord[i,0], fightRecord[i,1], fightRecord[i,2], i);
 
-    // Write to console all the available records
-    System.Console.WriteLine ("\nPodsumowanie:");
-    for (int i = 0; i < fightRecordCurrentSize; i++){
-      System.Console.WriteLine ("Tura #{0}:\t{1}\t-\t{2},\t{3}",
-        fightRecord[displayRecordIndex,3], fightRecord[displayRecordIndex,0], fightRecord[displayRecordIndex,1], fightRecord[displayRecordIndex,2]);
-      displayRecordIndex = (displayRecordIndex + 1);
+      }
     }
-  }
 
 
 
